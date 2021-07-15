@@ -3,13 +3,13 @@ from distutils.core import setup
 setup(
     name='forefront-pytorch',
     packages=['forefront_pytorch'],
-    version='0.2.1',
+    version='0.2.3',
     license='MIT',
-    description='Subpackage for forefront (tryforefront.com)',
+    description='Subpackage for forefront (helloforefront.com)',
     author='Forefront Technologies',
-    author_email='pypi@tryforefront.com',
+    author_email='pypi@helloforefront.com',
     url='https://github.com/TryForefront/forefront-pytorch',
-    download_url='https://github.com/TryForefront/forefront-pytorch/archive/refs/tags/v0.2.0.tar.gz',
+    download_url='https://github.com/TryForefront/forefront-pytorch/archive/refs/tags/v0.2.3.tar.gz',
     keywords=['MACHINE LEARNING', 'DATA SCIENCE', 'ML', "PYTORCH"],
     install_requires=[
         'torch',

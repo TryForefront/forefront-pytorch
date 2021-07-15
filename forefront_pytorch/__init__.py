@@ -25,15 +25,35 @@ def get_data_from_numpy_files(folder: str, index: int, n_x: int) -> Tuple[np.nda
 
     return result
 
+
+def extract_num_from_filename(name: str) -> int:
+    first = name.split('.np')[0]
+    if not first or first == '':
+        return 0
+    second = first.split('_')[-1]
+    if not second or second == '':
+        return 0
+
+    return int(second)
+
+
 def calc_num_x(folder: str) -> int:
     files = os.listdir(folder)
 
-    samples = random.sample(list(range(len(files)//20)), 3)
+    filtered_files = [f for f in files if '.np' in f]
 
+    n = 3
+
+    if len(filtered_files) == 0:
+        raise ValueError('No files found downloaded!')
+
+    while n > len(filtered_files):
+        n = n - 1
+
+    samples = [extract_num_from_filename(f) for f in random.sample(filtered_files, n)]
     n_x = -1
-
     for sample in samples:
-        subset = [f for f in files if '_{}.np'.format(sample) in f]
+        subset = [f for f in filtered_files if '_{}.np'.format(sample) in f]
 
         if n_x == -1:
             n_x = len(subset)
